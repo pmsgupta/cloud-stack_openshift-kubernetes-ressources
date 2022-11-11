@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: um-tools-deployment
+spec:
+  selector:
+    matchLabels:
+      app: um-tools
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: um-tools
+    spec:
+      containers:
+      - name: um-tools
+        image: softwareag/universalmessaging-tools:10.11
+        ports:
+        - containerPort: 9001

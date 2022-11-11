@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: msr-poc-umapp
+spec:
+  host: msr-poc-umapp.apps.ocp1.eur.ad.sag
+  to:
+    kind: Service
+    name: msr-poc-umapp
+  port:
+  # this vlaue defined service (service.yaml)
+    targetPort: tcp-9000 

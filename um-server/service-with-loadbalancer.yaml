@@ -1,0 +1,21 @@
+apiVersion: v1
+# refer below links for more information
+#https://docs.openshift.com/container-platform/4.10/rest_api/network_apis/service-v1.html
+#https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+#https://docs.openshift.com/container-platform/4.10/networking/configuring_ingress_cluster_traffic/overview-traffic.html
+
+kind: Service
+metadata:
+  name: umserver-service
+  labels: 
+    app: umserver
+spec:
+  selector:
+    app: umserver
+  ports:
+ # "name" value defined below need to be used as-is in route defination (see route.yaml ) if we need to enable  for http(s) 
+    - name: tcp-9000 
+      protocol: TCP
+      port: 80
+      targetPort: 9000
+  type: LoadBalancer 

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msr-poc-umapp
+spec:
+  selector:
+    matchLabels:
+      app: msr-poc-umapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: msr-poc-umapp
+    spec:
+      containers:
+      - name: msr-poc-umapp
+        image: image-registry.openshift-image-registry.svc:5000/presales-na-dev/msr-poc-restapi:1.2
+        ports:
+        - containerPort: 5555

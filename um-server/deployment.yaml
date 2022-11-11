@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: umserver
+spec:
+  serviceName: umserver-service
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: umserver
+  template:
+    metadata:
+      labels:
+        app: umserver
+    spec:
+      containers:
+      - name: umserver
+        image: softwareag/universalmessaging-server:10.11
+        ports:
+        - containerPort: 9000

@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: umserver-route
+spec:
+  host: umserver.apps.ocp1.eur.ad.sag
+  to:
+    kind: Service
+    name: umserver-service
+  port:
+  # this vlaue defined service (service.yaml)
+    targetPort: tcp-9000 
